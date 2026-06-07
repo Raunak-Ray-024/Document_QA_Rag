@@ -3,6 +3,25 @@ Ingestion Service - Handles PDF processing, chunking, and database storage.
 This is the core pipeline that converts PDFs into searchable vector chunks.
 """
 
+import nltk
+import os
+
+# Set NLTK data path to a writable directory
+nltk_data_dir = os.path.join(os.getcwd(), 'nltk_data')
+os.makedirs(nltk_data_dir, exist_ok=True)
+nltk.data.path.append(nltk_data_dir)
+
+# Download required data (only if not already present)
+try:
+    nltk.data.find('corpora/wordnet.zip')
+except LookupError:
+    nltk.download('wordnet', download_dir=nltk_data_dir)
+
+try:
+    nltk.data.find('tokenizers/punkt.zip')
+except LookupError:
+    nltk.download('punkt', download_dir=nltk_data_dir)
+
 import io
 from typing import List
 from PyPDF2 import PdfReader
