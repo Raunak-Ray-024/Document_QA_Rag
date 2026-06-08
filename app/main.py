@@ -1,3 +1,10 @@
+print("=== STARTING APP ===")
+try:
+    import os
+    print(f"PORT env var: {os.environ.get('PORT', 'NOT SET')}")
+except Exception as e:
+    print(f"Error reading env: {e}")
+
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
