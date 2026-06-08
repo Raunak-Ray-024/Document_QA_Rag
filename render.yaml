@@ -3,7 +3,7 @@ services:
     name: rag-api
     runtime: python
     pythonVersion: 3.11
-    buildCommand: pip install -r requirements.txt && python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('wordnet'); nltk.download('omw-1.4'); print('NLTK resources downloaded')" && chmod +x start.sh
+    buildCommand: pip install --upgrade pip setuptools wheel && pip install -r requirements.txt && python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('wordnet'); nltk.download('omw-1.4'); print('NLTK resources downloaded')" && chmod +x start.sh
 
     startCommand: bash start.sh
     envVars:
