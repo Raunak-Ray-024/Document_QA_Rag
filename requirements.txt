@@ -15,4 +15,4 @@ torch>=2.9.0
 sentence-transformers>=2.2.0
 rank-bm25==0.2.2
 numpy>=1.26.0,<2.0.0
-
+spacy>=3.7.0
