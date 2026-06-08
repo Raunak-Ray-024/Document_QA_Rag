@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: rag-api
+    runtime: python
+    pythonVersion: 3.12
+    buildCommand: pip install -r requirements.txt && python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('wordnet'); nltk.download('omw-1.4'); print('NLTK resources downloaded')" && chmod +x start.sh
+
+    startCommand: bash start.sh
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
